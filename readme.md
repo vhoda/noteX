@@ -16,12 +16,14 @@ m0hz gustará en dar la comodidad para empresas & usuarios en entorno administra
 <br>
 <br>
 ## Ver 0.1~
- 
+
+
 ~~* Interfaz terminada, nav, footer, header, logo, forms.~~
 ~~* Implementado el db~~
 ~~* Algoritmo terminado para `Postear`~~
 ~~* Botón Eliminar~~
-  #destarcado por cambio de framework
+  
+destarcado por cambio de framework
 
 ## Ver 1.2
 
