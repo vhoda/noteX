@@ -11,8 +11,8 @@
 <div class="row">
     <div class="d-flex justify-content-center">
         <div class="col-md-4">
-            <div class="card">
-                <div class="class card body">
+            <div class="card shadow">
+                <div class="card body">
                     <form action="" class="form-control" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form | crispy }}
@@ -23,8 +23,6 @@
                             <button type="reset" class="btn btn-danger"><i class="fas fa-times"></i> Borrar todo</button>
 
                         </div>
-    
-                        {{alerta}}
     
                 </div>
             </div>

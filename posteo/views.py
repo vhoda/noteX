@@ -7,7 +7,7 @@ from .models import posteo
 from .forms import agregarForm, CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
@@ -89,9 +89,8 @@ def registro(request):
         if formulario.is_valid():
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
-            login(request, user)
             messages.success(request, "Se ha registrado Correctamente! :D")
-            return redirect(to = "inicio")
+            return redirect(to = "registro")
         data["form"] = formulario
     return render(request, 'registration/registro.html', data)
 
