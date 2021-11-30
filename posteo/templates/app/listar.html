@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+{% load humanize %}
+<table>
+    <tr>
+        <th>cod actividad: </th>
+        <th>base: </th>
+        <th>fecha: </th>
+        <th>hora inicio: </th>
+        <th>hora termino: </th>
+        <th>tipo brigada: </th>
+        <th>clave unidad: </th>
+        <th>nombre jefe brigada: </th>
+        <th>nombre de conductor: </th>
+        <th>numero de brigadistas: </th>
+        <th>numero de conductor: </th>
+        <th>personal operativo: </th>
+        <th>patente: </th>
+        <th>motosierra: </th>
+        <th>motobomba: </th>
+        <th>stock aero base: </th>
+        <th>kit meteologico: </th>
+        <th>sector: </th>
+        <th>stock despuma: </th>
+        <th>Observaciones: </th>
+    </tr>
+</table>
+    {% for b in brigadista%}
+
+    <tr>
+        <td>{{% b.cod actividad | title %}} </td>
+        <td>{{% b.base | title%} }</td>
+        <td>{{fecha }}</td>
+        <td>{{hora inicio }}</td>
+        <td>{{hora termino}} </td>
+        <td>{{tipo brigada} </td>
+        <td>{{clave unidad }}</td>
+        <td>{{nombre jefe brigada}} </td>
+        <td>{{nombre de conductor}} </td>
+        <td>{{numero de brigadistas}} </td>
+        <td>{{numero de conductor}} </td>
+        <td>{{personal operativo}} </td>
+        <td>{{patente}} </td>
+        <td>{{motosierra }}</td>
+        <td>{{motobomba}} </td>
+        <td>{{stock aero base}} </td>
+        <td>{{kit meteologico}} </td>
+        <td>{{sector}} </td>
+        <td>{{stock despuma}} </td>
+        <td>{{Observaciones}} </td>
+    </tr>
+    {% end for %}
+
+    
+{% endblock %}
+

@@ -1,0 +1,54 @@
+<head>
+  <title> Inicio / noteX</title>
+</head>
+
+{% extends 'app/base.html'%}
+
+{% block body %}
+<br>
+<h1 class="display-6 text-center"><i class="fas fa-sticky-note"></i> Actividades anteriores</h1>
+<br>
+<br>
+  <!---grupo card--->
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    <!--tarjeta-->
+    <!---DATA--->
+    {% for p in posteos %}
+    <div class="col">
+      <div class="card shadow-lg">
+        <div class="card-body shadow-lg">
+          <h4 class="card-text fst-italic">Clave de unidad:<b> {{ p.id| title }} </b></h4>
+          <p class="card-text">Base: <b>{{ p.base | title }}</b></p>
+          <p class="card-text">Fecha: <b> {{ p.fecha | title }}</b></p>
+          <p class="card-text">Hora de inicio: <b>{{ p.hora_inicio | title }}</b></p>
+          <p class="card-text">Hora de termino: <b>{{ p.hora_termino | title }}</b></p>
+          <p class="card-text">Tipo brigada: <b>{{ p.tipo_brigada | title }}</b></p>
+          <p class="card-text">Nombre jefe de Brigada: <b>{{ p.nombre_jefebrigada | title }}</b></p>
+          <p class="card-text">Nombre del Conductor: <b>{{ p.nombre_conductor | title }}</b></p>
+          <p class="card-text">Numero de Brigadistas: <b>{{ p.numero_de_brigadistas | title }}</b></p>
+          <p class="card-text">Numero de Motosierristas: <b>{{ p.numero_de_motosierristas | title }}</b></p>
+          <p class="card-text">Numero de Conductor: <b>{{ p.numero_de_conductor | title }}</b></p>
+          <p class="card-text">Personal Operativo: <b>{{ p.personal_operativo | title }}</b></p>
+          <p class="card-text">Patente: <b>{{ p.patente | title }}</b></p>
+          <p class="card-text">Motosierra: <b>{{ p.motosierra | title }}</b></p>
+          <p class="card-text">Motobomba: <b>{{ p.motobomba | title }}</b></p>
+          <p class="card-text">Stock aero base: <b>{{ p.stock_aerobase | title }}</b></p>
+          <p class="card-text">Kit Meteorologico: <b>{{ p.kit_meteorologico | title }}</b></p>
+          <p class="card-text">Sector: <b>{{ p.sector | title }}</b></p>
+          <p class="card-text">Stock Despuma: <b>{{ p.stock_despuma | title }}</b></p>
+          <p class="card-text">Observacion: <b>{{ p.observaciones | title }}</b></p>
+          <div class="d-flex">
+            <a href="{% url 'modificar' p.id %}" type="submit" class="btn btn-outline-success btn-sm"><i class="fas fa-pencil-alt"></i> Modificar</a>
+            &nbsp;
+            <a href="{% url 'eliminar' p.id %}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i> Borrar</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>    
+<!--grupo termino de card-->
+  </div>
+
+
+{% endblock %}

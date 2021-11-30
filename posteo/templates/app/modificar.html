@@ -1,0 +1,35 @@
+<head>
+    <title>Modificar Actividad / noteX</title>
+</head>
+{% extends 'app/base.html'%}
+
+{% block body %}
+{% load crispy_forms_tags %}
+
+<br>
+<h1 class="display-6 text-center"><i class="fas fa-file-import"></i> Modificar Actividad</h1>
+<br>
+<div class="row">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="class card body">
+                    <form action="" class="form-control" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <br> 
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-clipboard-check"></i> Editar Actividad</button>
+                        </div>
+    
+                        {{alerta}}
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
