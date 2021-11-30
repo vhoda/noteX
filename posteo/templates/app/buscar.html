@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Resultado / noteX</title>
+</head>
+ 
+{% extends 'app/base.html'%}
+{% block body %}    
+    
+<br>
+<h1 class="display-6 text-center"><i class="fas fa-search"></i> Buscar</h1>   
+
+<br>
+<!--info-->
+<div class="d-flex justify-content-center">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+      </svg>
+      <div class="alert alert-secondary d-flex align-items-center shadow" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+        <div>
+            <i>Aquí se puede buscar a cada resultado y si desea Eliminar o Modificar.</i>
+        </div>
+      </div>
+</div>
+<!--cierre de info-->
+<br>
+<!--input busqueda-->
+<div class="container-sm">
+    <form method="get">
+    <div class="input-group mb-3 shadow">
+        <input type="text" class="form-control " placeholder="Ejemplo: Codigo de actividad: 40" name="buscar" value="{{ request.GET.buscar }}">
+        <button class="btn btn-outline-success" type="submit" id="button-addon2"><i class="fas fa-search"></i> Buscar</button>
+    </div>
+    </form>
+</div>
+<!--Fin de busqueda-->
+
+
+
+<div class="container-md">
+  <!---grupo card--->
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    <!--tarjeta-->
+    <!---DATA--->
+    {% for p in posteos %}
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-body shadow">
+          <h4 class="card-text fst-italic">Clave de unidad:<b> {{ p.id| title }} </b></h4>
+          <p class="card-text">Base: <b>{{ p.base | title }}</b></p>
+          <p class="card-text">Fecha: <b> {{ p.fecha | title }}</b></p>
+          <p class="card-text">Hora de inicio: <b>{{ p.hora_inicio | title }}</b></p>
+          <p class="card-text">Hora de termino: <b>{{ p.hora_termino | title }}</b></p>
+          <p class="card-text">Tipo brigada: <b>{{ p.tipo_brigada | title }}</b></p>
+          <p class="card-text">Nombre jefe de Brigada: <b>{{ p.nombre_jefebrigada | title }}</b></p>
+          <p class="card-text">Nombre del Conductor: <b>{{ p.nombre_conductor | title }}</b></p>
+          <p class="card-text">Numero de Brigadistas: <b>{{ p.numero_de_brigadistas | title }}</b></p>
+          <p class="card-text">Numero de Motosierristas: <b>{{ p.numero_de_motosierristas | title }}</b></p>
+          <p class="card-text">Numero de Conductor: <b>{{ p.numero_de_conductor | title }}</b></p>
+          <p class="card-text">Personal Operativo: <b>{{ p.personal_operativo | title }}</b></p>
+          <p class="card-text">Patente: <b>{{ p.patente | title }}</b></p>
+          <p class="card-text">Motosierra: <b>{{ p.motosierra | title }}</b></p>
+          <p class="card-text">Motobomba: <b>{{ p.motobomba | title }}</b></p>
+          <p class="card-text">Stock aero base: <b>{{ p.stock_aerobase | title }}</b></p>
+          <p class="card-text">Kit Meteorologico: <b>{{ p.kit_meteorologico | title }}</b></p>
+          <p class="card-text">Sector: <b>{{ p.sector | title }}</b></p>
+          <p class="card-text">Stock Despuma: <b>{{ p.stock_despuma | title }}</b></p>
+          <p class="card-text">Observacion: <b>{{ p.observaciones | title }}</b></p>
+          <div class="d-flex">
+            <a href="{% url 'modificar' p.id %}" type="submit" class="btn btn-outline-success btn-sm"><i class="fas fa-pencil-alt"></i> Modificar</a>
+            &nbsp;
+            <a href="{% url 'eliminar' p.id %}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i> Borrar</a>
+          </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>    
+<!--grupo termino de card-->
+  </div>
+</div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+            No se encontró ningun resultado 
+            </div>
+        </div>
+    </div>
+  
+{% endblock %}
+</html>

@@ -8,15 +8,15 @@
 <br>
 <h1 class="display-6 text-center"><i class="fas fa-sticky-note"></i> Actividades anteriores</h1>
 <br>
-<br>
+  <div class="container-md">
   <!---grupo card--->
   <div class="row row-cols-1 row-cols-md-4 g-3">
     <!--tarjeta-->
     <!---DATA--->
     {% for p in posteos %}
     <div class="col">
-      <div class="card shadow-lg">
-        <div class="card-body shadow-lg">
+      <div class="card shadow">
+        <div class="card-body shadow">
           <h4 class="card-text fst-italic">Clave de unidad:<b> {{ p.id| title }} </b></h4>
           <p class="card-text">Base: <b>{{ p.base | title }}</b></p>
           <p class="card-text">Fecha: <b> {{ p.fecha | title }}</b></p>
@@ -49,6 +49,7 @@
     </div>    
 <!--grupo termino de card-->
   </div>
+</div>
 
 
 {% endblock %}

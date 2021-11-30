@@ -23,10 +23,6 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-5 offset-md-2" style="max-width: 30rem;">
@@ -35,16 +31,16 @@
                         <div class="col-10">
                             <img src="../app/img/logo.png" alt="">
                         </div>
-                        <h2 class="display-6 text-center">Iniciar Sesión</h2>
+                        <h2 class="display-6 text-center"><i class="fas fa-address-card"></i> Iniciar Sesión</h2>
                         <br>
 
                         <form action="" method="post">
 
                             {% csrf_token %}
                             {{ form | crispy }}
-
                             <br>
                             <input type="submit" value="Ingresar" class="btn btn-success float-right">
+                            <a href="#" class="float-right"> ¿Olvidó su Contraseña?</a>
                         </form>
                     </div>
                 </div>

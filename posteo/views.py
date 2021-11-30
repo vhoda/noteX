@@ -1,3 +1,5 @@
+from django.contrib.messages.api import error
+from django.db.models.query import QuerySet
 from django.forms.models import ModelForm
 from django.http import request
 from django.shortcuts import redirect, render
@@ -7,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
 
 #las vistas donde se definen que deben hacer en cada /url/
 
@@ -24,6 +28,7 @@ def login(request):
 @login_required
 def inicio(request):
     posteos = posteo.objects.all()
+    
     data = {
         'posteos': posteos
     }
@@ -89,3 +94,18 @@ def registro(request):
             return redirect(to = "inicio")
         data["form"] = formulario
     return render(request, 'registration/registro.html', data)
+
+def buscar(request):
+
+    busqueda = request.GET.get("buscar")
+    posteos = posteo.objects.all()
+
+    if busqueda:
+        posteos = posteo.objects.filter(
+            Q(id__icontains = busqueda) |
+            Q(base__incontains = busqueda)
+        ).distinct()
+
+    return render(request, 'app/buscar.html', {'buscar':buscar})
+    
+
