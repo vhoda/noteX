@@ -9,7 +9,6 @@
 	<script src="https://kit.fontawesome.com/87575817a6.js" crossorigin="anonymous"></script>
 	<!--ajax-->
 	
-
 	<link rel="icon" type="image/png" href="">
 	
 </head>
@@ -35,6 +34,11 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'buscar' %}"><i class="fas fa-search"></i> /Buscar</a>
 				</li>
+				{% if perms.posteo.add_usuario %}
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'registro' %}"><i class="fas fa-user-plus"></i> /Registrar Usuario</a>
+				</li>
+				{% endif %}
 				  
 			</ul>
 
@@ -47,7 +51,7 @@
 			</ul>-->
 			<ul class="nav navbar-nav ms-auto">
 				<li class="nav-item  dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-circle"></i> /@{{ user.first_name }}</a>
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-circle"></i> @{{ user.first_name }} {{ user.last_name }}</a>
 					<div class="dropdown-menu dropdown-menu-end shadow">
 						<a href="#" class="dropdown-item "><i class="far fa-clipboard"></i> Mis actividades</a>
 						<a href="#" class="dropdown-item"><i class="fas fa-id-card-alt"></i> Editar Perfil</a>

@@ -8,7 +8,7 @@ from .forms import agregarForm, CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
 
 
@@ -78,7 +78,7 @@ def eliminar(request, id):
     messages.success(request, "Eliminado Correctamente!")
     return redirect(to = "inicio")
 
-
+@permission_required('posteo.add_usuario')  
 def registro(request):
     data = {
         'form': CustomUserCreationForm
