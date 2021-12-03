@@ -31,3 +31,6 @@ destarcado por cambio de framework
 * Implementado el db (sqlite)
 * Algoritmo terminado para `Postear`, `vista inicio`, `agregar`, `login/logout`, `dropdown, CRUD`
 * Botón Eliminar, Modificar, Alerts
+  
+
+## Proyecto cerrado & Abandonado
